@@ -13,7 +13,7 @@ class MeshTransferToolEditor : EditorWindow
 
     private int meshNum = 0;
 
-    [MenuItem("GameObject/TransferMeshes", false, 0)]
+    [MenuItem("GameObject/[GameObject] Transfer Mesh+Bones", false, 0)]
     public static void contextMenu(MenuCommand menuCommand)
     {
         Mesh_Renderers = new List<SkinnedMeshRenderer>();
@@ -30,19 +30,19 @@ class MeshTransferToolEditor : EditorWindow
                 Debug.Log("ROOT: " + Armature.name);
             }
         }
-        
+
         MeshRemap();
-        
+
     }
-    
-    [MenuItem("Cascadian/MeshTransferTool")]
+
+    [MenuItem("Mesh+Bones/Skinned Mesh+Bone Transfer Tool")]
     static void Init()
     {
         // Get existing open window or if none, make a new one:
         MeshTransferToolEditor window = (MeshTransferToolEditor)EditorWindow.GetWindow(typeof(MeshTransferToolEditor));
         window.Show();
     }
-    
+
     // Put in a map every bones until there is no more children
     static void GetBones(Transform pBone)
     {
@@ -103,7 +103,7 @@ class MeshTransferToolEditor : EditorWindow
         Armature = (GameObject)EditorGUILayout.ObjectField(Armature, typeof(GameObject), true, GUILayout.Height(25f));
 
         GUILayout.Space(20f);
-        
+
         { // Meshes
             EditorGUILayout.BeginHorizontal();
             GUILayout.Label("Meshes to Transfer", EditorStyles.boldLabel);
